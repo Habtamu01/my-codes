@@ -1,0 +1,82 @@
+#include <iostream>
+using namespace std;
+
+int largestprimefactor(int n) {
+    int value = 0,r =0;
+    if (n > 1) {
+        for (int i = 2; i <= n; i++) {
+            r = n % i;
+            if (r == 0) {
+                int temp;
+                for (int j = 2; j < i; j++) {
+                    temp = i % j;
+                }
+                int temp1 = i;
+                if (temp > value) {
+                    value = temp;
+                }
+            }
+        }
+    }
+    return value;
+}
+
+int main()
+{
+   cout << largestprimefactor(10);
+}
+
+//=====================================================================================================================
+// sequeneced array.cpp : This file contains the 'main' function. Program execution begins and ends there.
+//
+
+#include <iostream>
+using namespace std;
+
+
+int isSequencedArray(int a[], int len, int m, int n) {
+    int value = 0;
+    if (a[0] == m && a[len - 1] == n) {
+        for (int i = 0; i < len - 1; i++) {
+            if (a[i] <= a[i+1] ) {
+                value = 1;
+            }
+            else if (a[i] > a[i + 1] || a[i] != a[i + 1]-1) {
+                value = 0;
+                break;
+            }
+        }
+    }
+    return value;
+}
+int main()
+{
+    int array[] = {1,2,5 };
+    int l = sizeof(array) / sizeof(array[0]);
+    cout << isSequencedArray(array, l, 1, 5);
+}
+//========================================================================================================================
+#include <iostream>
+using namespace std;
+int checkConcatenatedSum(int n, int catlen) {
+	int original = n, totalsum = 0 ;
+	while (n != 0) {
+		int conctsum = 0;
+		int digit = n % 10;
+		for (int i = 0; i < catlen; i++) {
+			conctsum = (conctsum * 10) + digit;
+		}
+		totalsum += conctsum;
+		n = n / 10;
+	}
+	return original == totalsum ? 1 : 0;
+}
+int main() {
+	cout << checkConcatenatedSum(198, 2);
+	cout << checkConcatenatedSum(198, 3);
+	cout << checkConcatenatedSum(2997, 3);
+	cout << checkConcatenatedSum(2997, 2);
+	cout << checkConcatenatedSum(13332, 4);
+	cout << checkConcatenatedSum(9, 1);
+}
+//====================================================================================================================
